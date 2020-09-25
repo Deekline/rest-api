@@ -32,7 +32,7 @@ ITEMS
     "Content-Type": "application/json; charset=utf-8"
  
         ------------------------------
-    http://domain.test/auth/signup POST
+    http://domain.test/feed/items POST
             
     "Content-Type": "application/json; "
     Body: {
