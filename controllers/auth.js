@@ -7,23 +7,30 @@ const objectToArray = (obj) => {
 
 
 const signIn = (req, res, _next) => {
+
     const email = req.body.email
     const password = req.body.password
 
     const user = objectToArray(USERS).find(user => user.email === email)
 
     if (user) {
-        return user.password === password ? res.status(200).json({
+        if (user.password !== password) {
+            const error = new Error('Wrong password')
+            error.statusCode = 422
+            throw error
+        }
+
+        return res.status(200).json({
             email: email,
             message: 'Greetings'
-        }) : res.status(404).json({
-            message: 'Wrong password'
         })
+
     }
 
-    return res.status(404).json({
-        message: 'Wrong email'
-    })
+    const error = new Error('Wrong email')
+    error.statusCode = 422
+    throw error
+
 }
 
 
@@ -34,9 +41,11 @@ const signUp = (req, res, _next) => {
     const user = objectToArray(USERS).find(user => user.email === email)
 
     if (user) {
-        return res.status(409).json({
-            message: 'User already exist'
-        })
+
+        const error = new Error('User already exist')
+        error.statusCode = 409
+        throw error
+
     } else {
         USERS[objectToArray(USERS).length + 1] = {
             email: email,

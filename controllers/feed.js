@@ -1,4 +1,4 @@
-import {ITEMS, ID} from "../store/items.js";
+import {ID, ITEMS} from "../store/items.js";
 
 const getItems = (req, res, _next) => {
     return res.status(200).json({
@@ -17,6 +17,7 @@ const addItem = (req, res, _next) => {
         description: description,
         price: price
     })
+
     return res.status(201).json({
         message: 'Post created',
         item: {
