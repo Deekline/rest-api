@@ -1,27 +1,34 @@
-const getPosts = (req, res, _next) => {
+import {ITEMS, ID} from "../store/items.js";
+
+const getItems = (req, res, _next) => {
     return res.status(200).json({
-        posts: [{
-            title: 'First Post',
-            content: 'This is first post!'
-        }]
+        items: ITEMS
     })
 }
 
-const addPost = (req, res, _next) => {
+const addItem = (req, res, _next) => {
     const title = req.body.title
-    const content = req.body.content
+    const description = req.body.description
+    const price = req.body.price
+
+    ITEMS.push({
+        id: ID(),
+        title: title,
+        description: description,
+        price: price
+    })
     return res.status(201).json({
         message: 'Post created',
-        post: {
-            id: new Date().toISOString(),
+        item: {
             title: title,
-            content: content
+            description: description,
+            price: price
         }
     })
 }
 
 
 export {
-    getPosts,
-    addPost
+    getItems,
+    addItem
 }
