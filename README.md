@@ -31,6 +31,7 @@ ITEMS
 
     "Content-Type": "application/json; charset=utf-8"
  
+ 
         ------------------------------
     http://domain.test/feed/items POST
             
@@ -40,3 +41,11 @@ ITEMS
         "description: "....",
         "price": "...."
         }
+        
+        
+        ------------------------------
+    http://domain.test/feed/item/:itemId GET    
+        
+    "Content-Type": "application/json; "
+     
+

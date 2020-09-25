@@ -28,8 +28,23 @@ const addItem = (req, res, _next) => {
     })
 }
 
+const getSingleItem = (req, res, _next) => {
+    const itemId = req.params.itemId
+
+    if(!ITEMS[itemId]) {
+        const error = new Error('Wrong item id')
+        error.statusCode = 422
+        throw error
+    }
+
+    return res.status(200).json({
+        item: ITEMS[itemId]
+    })
+}
+
 
 export {
     getItems,
-    addItem
+    addItem,
+    getSingleItem
 }

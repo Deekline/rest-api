@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.use('/feed', feedRouter);
 app.use('/auth', authRouter)
 
-app.use((error, req, res, next) => {
+app.use((error, req, res, _next) => {
     console.log(error)
     const status = error.statusCode || 500
     const message = error.message
