@@ -8,7 +8,7 @@ EndPoints
 
 AUTH
    
-    http://domain.test/auth/signin GET
+    http://domain.test/auth/signin POST
     
     "Content-Type": "application/json; charset=utf-8"
     Body: {
