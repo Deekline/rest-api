@@ -1,5 +1,4 @@
-import {USERS} from "../store/users.js";
-
+import {USERS} from '../models/users.js';
 
 const objectToArray = (obj) => {
     return Object.keys(obj).map(objKey => obj[objKey])

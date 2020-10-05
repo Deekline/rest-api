@@ -1,9 +1,11 @@
-import {ID, ITEMS} from "../store/items.js";
+import {ID, ITEMS} from '../models/items.js';
 
 const getItems = (req, res, _next) => {
+
     return res.status(200).json({
         items: ITEMS
     })
+
 }
 
 const addItem = (req, res, _next) => {
@@ -26,6 +28,7 @@ const addItem = (req, res, _next) => {
             price: price
         }
     })
+
 }
 
 const getSingleItem = (req, res, _next) => {
@@ -40,6 +43,7 @@ const getSingleItem = (req, res, _next) => {
     return res.status(200).json({
         item: ITEMS[itemId]
     })
+
 }
 
 

@@ -1,7 +1,7 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import {feedRouter} from "./router/feed.js";
-import {authRouter} from "./router/auth.js";
+import express from 'express';
+import bodyParser from 'body-parser';
+import {feedRouter} from './router/feed.js';
+import {authRouter} from './router/auth.js';
 
 const app = express();
 
@@ -18,13 +18,16 @@ app.use('/feed', feedRouter);
 app.use('/auth', authRouter)
 
 app.use((error, req, res, _next) => {
+
     console.log(error)
+
     const status = error.statusCode || 500
     const message = error.message
 
     res.status(status).json({
         message: message
     })
+
 })
 
 app.listen(8080)
